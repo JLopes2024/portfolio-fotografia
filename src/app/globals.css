@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer base {
+  /* Reseta comportamentos padrão do navegador que prejudicam a fluidez */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900;
+  }
+
+  /* Remove o outline azul padrão e coloca um anel elegante ao focar com teclado (Acessibilidade) */
+  *:focus-visible {
+    @apply outline-none ring-1 ring-neutral-400 ring-offset-2 ring-offset-neutral-50;
+  }
+}
+
+@layer utilities {
+  /* Utilitário para ocultar scrollbars em galerias horizontais mantendo o scroll ativo */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
