@@ -56,10 +56,10 @@ export default function Portfolio() {
                 key={category.id}
                 onClick={() => {
                   setActiveCategory(category.id);
-                  setLightboxOpen(false); // Garante que fecha ao mudar categoria
+                  setLightboxOpen(false);
                 }}
                 className={cn(
-                  "pb-1 transition-all duration-300 tracking-wide",
+                  "pb-1 transition-all duration-300 tracking-wide cursor-pointer",
                   activeCategory === category.id
                     ? "text-neutral-900 border-b border-neutral-900"
                     : "text-neutral-400 hover:text-neutral-600 border-b border-transparent"
@@ -71,13 +71,13 @@ export default function Portfolio() {
           </nav>
         </div>
 
-        {/* Galeria Simétrica */}
+        {/* Galeria Simétrica com Feedback Tátil Aprimorado */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredImages.map((image, index) => (
             <div 
               key={image.id} 
               onClick={() => openLightbox(index)}
-              className="relative w-full aspect-[4/5] overflow-hidden group cursor-pointer bg-neutral-200"
+              className="relative w-full aspect-[4/5] overflow-hidden group cursor-pointer bg-neutral-200 active:scale-[0.99] transition-transform duration-200"
               role="button"
               aria-label={`Ver imagem: ${image.alt}`}
             >
@@ -85,11 +85,12 @@ export default function Portfolio() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
+              {/* Overlay com transição suave para feedback visual imediato */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 group-active:bg-black/25 transition-colors duration-300 pointer-events-none" />
             </div>
           ))}
         </div>
