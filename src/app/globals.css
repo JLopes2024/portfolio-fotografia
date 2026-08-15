@@ -1,11 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta personalizada baseada na identidade visual da marca d'água */
-  --color-studio-bg: #F7F5F0;       /* Off-white orgânico, toque de papel algodão */
-  --color-studio-card: #EFECE6;     /* Cinza quente claro para fundos de apoio */
-  --color-studio-dark: #1C1B18;     /* Carvão profundo e elegante para textos e rodapé */
-  --color-studio-muted: #7A756C;    /* Cinza terroso suave para legendas e detalhes */
+  /* Paleta Oficial do Estúdio Fotográfico */
+  --color-studio-sand: #D7C2A7;
+  --color-studio-beige: #C9AB91;
+  --color-studio-taupe: #B68F76;
+  --color-studio-terracotta: #A9745C;
+  --color-studio-terracotta-dark: #9B5943;
+  --color-studio-brown: #7A493B;
+  --color-studio-black: #211A17;
+
+  /* Mapeamento Semântico para Aplicação Global */
+  --color-studio-bg: #211A17;               /* Fundo principal profundo */
+  --color-studio-card: #7A493B;             /* Cards e blocos de apoio */
+  --color-studio-light: #D7C2A7;            /* Títulos e textos principais */
+  --color-studio-muted: #C9AB91;            /* Legendas e subtítulos */
+  --color-studio-accent: #A9745C;           /* Destaques e links */
+  --color-studio-terracotta: #A9745C;       /* Interações e botões */
 }
 
 @layer base {
@@ -17,13 +28,13 @@
 
   body {
     background-color: var(--color-studio-bg);
-    color: var(--color-studio-dark);
+    color: var(--color-studio-light);
   }
 
-  /* Foco acessível harmônico com a nova paleta */
+  /* Foco acessível harmônico com a paleta */
   *:focus-visible {
     outline: none;
-    ring: 1px solid var(--color-studio-muted);
+    ring: 1px solid var(--color-studio-accent);
     ring-offset: 2px;
     ring-offset-color: var(--color-studio-bg);
   }
