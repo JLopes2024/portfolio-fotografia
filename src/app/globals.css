@@ -1,7 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  /* Paleta personalizada baseada na identidade visual da marca d'água */
+  --color-studio-bg: #F7F5F0;       /* Off-white orgânico, toque de papel algodão */
+  --color-studio-card: #EFECE6;     /* Cinza quente claro para fundos de apoio */
+  --color-studio-dark: #1C1B18;     /* Carvão profundo e elegante para textos e rodapé */
+  --color-studio-muted: #7A756C;    /* Cinza terroso suave para legendas e detalhes */
+}
+
 @layer base {
-  /* Reseta comportamentos padrão do navegador que prejudicam a fluidez */
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -9,17 +16,20 @@
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-900;
+    background-color: var(--color-studio-bg);
+    color: var(--color-studio-dark);
   }
 
-  /* Remove o outline azul padrão e coloca um anel elegante ao focar com teclado (Acessibilidade) */
+  /* Foco acessível harmônico com a nova paleta */
   *:focus-visible {
-    @apply outline-none ring-1 ring-neutral-400 ring-offset-2 ring-offset-neutral-50;
+    outline: none;
+    ring: 1px solid var(--color-studio-muted);
+    ring-offset: 2px;
+    ring-offset-color: var(--color-studio-bg);
   }
 }
 
 @layer utilities {
-  /* Utilitário para ocultar scrollbars em galerias horizontais mantendo o scroll ativo */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

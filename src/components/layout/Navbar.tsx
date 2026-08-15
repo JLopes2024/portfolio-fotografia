@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -40,19 +41,29 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out font-sans",
           isScrolled 
-            ? "bg-neutral-50/90 backdrop-blur-md border-b border-neutral-200/50 py-4" 
-            : "bg-transparent py-6 md:py-8"
+            ? "bg-neutral-50/90 backdrop-blur-md border-b border-neutral-200/50 py-3" 
+            : "bg-transparent py-5 md:py-6"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
           
-          {/* Logo / Nome */}
+          {/* Logo Substituída por Imagem */}
           <a 
             href="#" 
-            className="font-serif text-xl md:text-2xl tracking-wide text-neutral-900 z-50 relative"
+            className="relative z-50 flex items-center focus-visible:ring-1 focus-visible:ring-neutral-400"
             onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Larissa Photographer - Ir para o início"
           >
-            LARISSA.
+            <div className="relative h-8 md:h-10 w-32 md:w-40">
+              <Image 
+                src="/images/marcadagua.png" 
+                alt="Larissa Photographer"
+                fill
+                priority
+                sizes="(max-width: 768px) 128px, 160px"
+                className="object-contain object-left contrast-125 brightness-90"
+              />
+            </div>
           </a>
 
           {/* Links Desktop */}

@@ -35,8 +35,8 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="w-full bg-neutral-50 py-24 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto">
+// Em src/components/sections/Portfolio.tsx
+<section id="portfolio" className="w-full bg-[#F7F5F0] py-24 px-6 md:px-12 lg:px-24 text-[#1C1B18]">      <div className="max-w-7xl mx-auto">
         
         {/* Cabeçalho da Seção */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">

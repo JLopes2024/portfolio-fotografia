@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function Hero() {
   return (
     // Adicionado pt-28 md:pt-32 lg:pt-40 para compensar o Navbar fixo
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-neutral-50 px-6 md:px-12 lg:px-24 pt-28 md:pt-32 lg:pt-40 pb-12">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+// Em src/components/sections/Hero.tsx
+<section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#F7F5F0] text-[#1C1B18] px-6 md:px-12 lg:px-24 pt-28 md:pt-32 lg:pt-40 pb-12">      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
         {/* COLUNA DE TEXTO */}
         <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 z-10">

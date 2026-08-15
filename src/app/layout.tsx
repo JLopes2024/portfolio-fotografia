@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar"; // <-- Importação do Navbar adicionada
+import Navbar from "@/components/layout/Navbar";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
 // Fonte para Interface e Textos de apoio (Neutra e legível)
 const inter = Inter({
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://www.seusite.com.br", // Substitua pelo domínio real futuramente
+    url: "https://www.seusite.com.br",
     title: "Larissa | Fotografia e Detalhes",
     description: "Congelando frações de segundo onde a luz encontra a emoção. Explore o portfólio.",
     siteName: "Larissa Photographer",
@@ -57,9 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className="bg-neutral-50 text-neutral-900 antialiased selection:bg-neutral-200 selection:text-neutral-900 font-sans relative">
-        <Navbar /> {/* <-- Navbar inserido antes do conteúdo da página */}
+      <body className="bg-[#F7F5F0] text-[#1C1B18] antialiased selection:bg-[#EFECE6] selection:text-[#1C1B18] font-sans relative">
+        <Navbar />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );

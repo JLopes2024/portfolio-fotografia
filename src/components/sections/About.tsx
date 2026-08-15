@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="sobre" className="w-full bg-white py-24 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+// Em src/components/sections/About.tsx
+<section id="sobre" className="w-full bg-[#EFECE6] py-24 px-6 md:px-12 lg:px-24 text-[#1C1B18]">      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
         {/* COLUNA DA FOTO (Esquerda) */}
         <div className="lg:col-span-5 relative w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] bg-neutral-100">
