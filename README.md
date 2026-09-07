@@ -1,37 +1,89 @@
-# 📷 Larissa Photographer — Portfólio Digital
+# 📸 Portfólio Fotográfico — Larissa Andrade
 
-Um portfólio de fotografia minimalista, elegante e de alta performance, desenvolvido com foco em direção de arte editorial, experiência do usuário imersiva e conversão.
+Site institucional e portfólio desenvolvido para apresentar o trabalho da fotógrafa **Larissa Andrade**, reunindo seus principais ensaios, identidade visual, informações profissionais e formas de contato em uma experiência moderna, elegante e responsiva.
 
-## ✨ Conceito & Direção de Arte
+O projeto foi construído com foco na valorização das fotografias, utilizando uma interface minimalista onde as imagens são protagonistas da navegação.
 
-Este projeto foi construído sob a premissa de que **a fotografia é a única protagonista**. Evitando templates corporativos ou excessos visuais, a interface utiliza:
-* **Espaços em branco generosos** (respiro editorial).
-* **Tipografia mista de alto contraste** (Cormorant Garamond para títulos e Inter para interfaces).
-* **Grade simétrica com proporção editorial (4:5)** e transições fluidas.
-* **Modo imersivo (Lightbox)** para apreciação de detalhes em tela cheia com navegação por teclado e toque.
+---
 
-## 🛠️ Tecnologias & Stack
+## ✨ Sobre o projeto
 
-O projeto utiliza tecnologias modernas de desenvolvimento web focadas em velocidade e SEO:
-* **[Next.js](https://nextjs.org/)** (App Router & Server/Client Components)
-* **[React](https://react.dev/)**
-* **[TypeScript](https://www.typescriptlang.org/)**
-* **[Tailwind CSS v4](https://tailwindcss.com/)**
-* **[Framer Motion](https://www.framer.com/motion/)** (Animações suaves e microinterações)
-* **[Lucide React](https://lucide.dev/)** (Ícones vetoriais minimalistas)
+A proposta do site é criar uma presença digital profissional para a fotógrafa, permitindo que clientes conheçam seu estilo de trabalho, naveguem pelos diferentes tipos de ensaio e entrem em contato de maneira simples.
 
-## 📂 Estrutura do Projeto
+O design foi inspirado em portfólios fotográficos contemporâneos, buscando combinar:
 
-```text
-portfolio-fotografia/
-├── public/
-│   └── images/          # Repositório de fotografias otimizadas
-├── src/
-│   ├── app/             # Rotas, Layout global e Metadados (SEO)
-│   ├── components/
-│   │   ├── layout/      # Navbar e Footer estruturais
-│   │   ├── sections/    # Hero, Portfólio e Sobre
-│   │   └── ui/          # Componentes reutilizáveis (Lightbox)
-│   └── lib/             # Dados estáticos (data.ts) e utilitários (cn)
-├── tsconfig.json        # Configuração do TypeScript e Path Aliases
-└── package.json         # Dependências do projeto
+- Minimalismo;
+- Elegância;
+- Grande destaque para imagens;
+- Navegação intuitiva;
+- Experiência visual imersiva;
+- Responsividade para dispositivos móveis.
+
+---
+
+## 📷 Principais funcionalidades
+
+- Hero com destaque para fotografias;
+- Carrossel automático de imagens;
+- Portfólio organizado por categorias;
+- Galerias fotográficas;
+- Seção de apresentação da fotógrafa;
+- Layout adaptado para desktop, tablet e celular;
+- Navegação fluida entre as seções;
+- Área de contato;
+- Tratamento responsivo das imagens para evitar cortes inadequados;
+- Estrutura preparada para expansão do portfólio.
+
+---
+
+## 🗂️ Categorias do portfólio
+
+O site apresenta diferentes áreas da fotografia, permitindo que cada ensaio seja exibido dentro de sua respectiva categoria.
+
+Entre elas podem estar:
+
+- Casamentos;
+- Ensaios de casal;
+- Gestantes;
+- Família;
+- Infantil;
+- Eventos;
+- Ensaios externos;
+- Projetos autorais.
+
+As categorias e imagens podem ser atualizadas diretamente na estrutura de dados do projeto.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+Este projeto foi desenvolvido utilizando:
+
+- **Next.js**
+- **React**
+- **TypeScript**
+- **CSS**
+- **JavaScript**
+- **HTML**
+- **Git**
+- **GitHub**
+
+---
+
+## 📁 Estrutura do projeto
+
+```bash
+src/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   └── ...
+│
+├── data/
+│   └── data.ts
+│
+└── public/
+    └── imagens/
