@@ -7,26 +7,23 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Início", href: "#inicio" },
-  { name: "Portfólio", href: "#portfolio" },
-  { name: "Sobre", href: "#sobre" },
-  { name: "Contato", href: "#contato" },
+  { name: "Início", href: "/#inicio" },
+  { name: "Portfólio", href: "/#portfolio" },
+  { name: "Sobre", href: "/#sobre" },
+  { name: "Contato", href: "/#contato" },
 ];
 
 export default function Navbar() {
   const [isPastHero, setIsPastHero] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = window.innerHeight * 0.72;
-      setIsPastHero(window.scrollY > threshold);
+      setIsPastHero(window.scrollY > window.innerHeight * 0.72);
     };
 
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
@@ -54,26 +51,19 @@ export default function Navbar() {
       if (event.key !== "Escape") return;
 
       setIsMobileMenuOpen(false);
-
-      window.requestAnimationFrame(() => {
-        menuButtonRef.current?.focus();
-      });
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
     };
 
     window.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
 
     const handleScreenChange = (event: MediaQueryListEvent) => {
-      if (event.matches) {
-        setIsMobileMenuOpen(false);
-      }
+      if (event.matches) setIsMobileMenuOpen(false);
     };
 
     mediaQuery.addEventListener("change", handleScreenChange);
@@ -83,10 +73,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
   const lightHeader = !isPastHero && !isMobileMenuOpen;
 
   return (
@@ -99,9 +86,9 @@ export default function Navbar() {
             : "bg-transparent py-5 md:py-6"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12 lg:px-24">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 md:px-12 lg:px-24">
           <a
-            href="#inicio"
+            href="/#inicio"
             onClick={closeMobileMenu}
             className="relative z-50 flex items-center focus-visible:outline-none"
             aria-label="Larissa Photographer - Ir para o início"
@@ -180,14 +167,14 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={closeMobileMenu}
-                className="font-serif text-4xl text-studio-black transition-colors duration-300 hover:text-studio-brown focus-visible:outline-none"
+                className="font-serif text-4xl text-studio-black transition-colors hover:text-studio-brown focus-visible:outline-none"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          <p className="absolute bottom-12 font-sans text-[10px] uppercase tracking-[0.22em] text-studio-brown/50">
+          <p className="absolute bottom-10 font-sans text-[10px] uppercase tracking-[0.22em] text-studio-brown/50">
             Fotografia & Direção
           </p>
         </div>

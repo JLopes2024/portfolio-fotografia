@@ -13,7 +13,7 @@ export default function Hero() {
         priority
         quality={92}
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-[52%_center] sm:object-center"
       />
 
       <div
@@ -21,21 +21,21 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-6 pb-9 pt-28 md:px-12 md:pb-12 lg:px-24">
-        <div className="flex w-full flex-col gap-4 border-t border-white/25 pt-5 text-white md:flex-row md:items-end md:justify-between">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-5 pb-7 pt-24 sm:px-6 sm:pb-9 md:px-12 md:pb-12 lg:px-24">
+        <div className="flex w-full flex-col gap-5 border-t border-white/25 pt-5 text-white sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-sans text-[10px] uppercase tracking-[0.24em] text-white/65">
+            <p className="font-sans text-[9px] uppercase tracking-[0.24em] text-white/65 sm:text-[10px]">
               Larissa Photographer
             </p>
 
-            <p className="mt-2 max-w-md font-serif text-2xl font-light italic leading-tight text-white md:text-3xl">
+            <p className="mt-2 max-w-md font-serif text-[clamp(1.55rem,5.5vw,2rem)] font-light italic leading-tight text-white md:text-3xl">
               Histórias preservadas em luz.
             </p>
           </div>
 
           <a
             href="#abordagem"
-            className="group inline-flex w-fit items-center gap-3 font-sans text-[10px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white focus-visible:outline-none"
+            className="group inline-flex w-fit items-center gap-3 font-sans text-[9px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white focus-visible:outline-none sm:text-[10px]"
           >
             Descobrir
             <span

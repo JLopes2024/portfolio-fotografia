@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+interface LightboxImage {
+  id: number;
+  src: string;
+  alt: string;
+  category: string;
+}
 
 interface LightboxProps {
-  images: { id: number; src: string; alt: string; category: string }[];
+  images: LightboxImage[];
   currentIndex: number;
   isOpen: boolean;
   onClose: () => void;
@@ -14,31 +21,116 @@ interface LightboxProps {
   onPrev: () => void;
 }
 
-export default function Lightbox({ images, currentIndex, isOpen, onClose, onNext, onPrev }: LightboxProps) {
-  
-  // Acessibilidade e UX: Navegação por teclado e bloqueio de scroll
-  useEffect(() => {
-    if (!isOpen) return;
+export default function Lightbox({
+  images,
+  currentIndex,
+  isOpen,
+  onClose,
+  onNext,
+  onPrev,
+}: LightboxProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") onNext();
-      if (e.key === "ArrowLeft") onPrev();
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    previousFocusRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    const focusCloseButton = window.requestAnimationFrame(() => {
+      closeButtonRef.current?.focus();
+    });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        onNext();
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        onPrev();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const dialog = dialogRef.current;
+
+      if (!dialog) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
+
+      if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     };
 
-    document.body.style.overflow = "hidden"; // Trava o scroll do fundo
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "unset";
+      window.cancelAnimationFrame(focusCloseButton);
       window.removeEventListener("keydown", handleKeyDown);
+
+      document.body.style.overflow = previousOverflow;
+
+      previousFocusRef.current?.focus();
     };
   }, [isOpen, onClose, onNext, onPrev]);
 
+  const currentImage = images[currentIndex];
+
   return (
     <AnimatePresence>
-      {isOpen && (
+      {isOpen && currentImage && (
         <motion.div
+          ref={dialogRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -46,55 +138,64 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNext
           className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/95 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
+          aria-label="Visualizador de fotografias"
         >
-          {/* Header Controls */}
-          <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-50 text-neutral-400">
-            <span className="text-xs uppercase tracking-widest font-sans">
+          <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between p-6 text-neutral-400">
+            <span
+              className="font-sans text-xs uppercase tracking-widest"
+              aria-live="polite"
+            >
               {currentIndex + 1} / {images.length}
             </span>
-            <button 
+
+            <button
+              ref={closeButtonRef}
+              type="button"
               onClick={onClose}
-              className="p-2 hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-neutral-400"
+              className="p-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400"
               aria-label="Fechar visualizador"
             >
               <X size={28} strokeWidth={1} />
             </button>
           </div>
 
-          {/* Navigation Controls */}
-          <button 
+          <button
+            type="button"
             onClick={onPrev}
-            className="absolute left-4 md:left-8 p-3 text-neutral-500 hover:text-white transition-colors z-50 hidden md:block focus-visible:ring-1 focus-visible:ring-neutral-400"
+            className="absolute left-4 z-50 hidden p-3 text-neutral-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400 md:left-8 md:block"
             aria-label="Foto anterior"
           >
             <ChevronLeft size={40} strokeWidth={1} />
           </button>
 
-          <button 
+          <button
+            type="button"
             onClick={onNext}
-            className="absolute right-4 md:right-8 p-3 text-neutral-500 hover:text-white transition-colors z-50 hidden md:block focus-visible:ring-1 focus-visible:ring-neutral-400"
+            className="absolute right-4 z-50 hidden p-3 text-neutral-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400 md:right-8 md:block"
             aria-label="Próxima foto"
           >
             <ChevronRight size={40} strokeWidth={1} />
           </button>
 
-          {/* Image Container */}
-          <div className="relative w-full h-full max-w-7xl max-h-[85vh] mx-auto px-4 md:px-24 flex items-center justify-center">
+          <div className="relative mx-auto flex h-full max-h-[85vh] w-full max-w-7xl items-center justify-center px-4 md:px-24">
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentIndex}
+                key={currentImage.id}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative w-full h-full"
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
+                className="relative h-full w-full"
               >
                 <Image
-                  src={images[currentIndex].src}
-                  alt={images[currentIndex].alt}
+                  src={currentImage.src}
+                  alt={currentImage.alt}
                   fill
-                  className="object-contain" // Preserva a proporção original sem cortar
-                  quality={100} // Prioridade máxima na qualidade visual
+                  className="object-contain"
+                  quality={90}
                   sizes="100vw"
                   priority
                 />
@@ -102,10 +203,19 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNext
             </AnimatePresence>
           </div>
 
-          {/* Mobile Tap Zones (Para navegação em telas touch sem poluir o visual) */}
-          <div className="absolute inset-0 z-40 flex md:hidden">
-             <div className="w-1/2 h-full" onClick={onPrev} />
-             <div className="w-1/2 h-full" onClick={onNext} />
+          <div
+            className="absolute inset-0 z-40 flex md:hidden"
+            aria-hidden="true"
+          >
+            <div
+              className="h-full w-1/2"
+              onClick={onPrev}
+            />
+
+            <div
+              className="h-full w-1/2"
+              onClick={onNext}
+            />
           </div>
         </motion.div>
       )}

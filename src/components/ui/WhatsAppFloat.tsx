@@ -1,22 +1,29 @@
 import { MessageCircle } from "lucide-react";
 
+import { getWhatsAppUrl } from "@/lib/site";
+
 export default function WhatsAppFloat() {
-  const whatsappNumber = "5511946951394"; 
-  const defaultMessage = "Olá, Larissa! Vi seu portfólio e gostaria de mais informações sobre os ensaios.";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
-    <aside aria-label="Atendimento rápido" className="fixed bottom-6 right-6 z-50">
+    <aside
+      aria-label="Atendimento rápido"
+      className="fixed right-6 bottom-6 z-50"
+    >
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Conversar via WhatsApp"
-        className="group flex items-center justify-center w-14 h-14 bg-studio-black text-studio-light rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-studio-muted/30 focus-visible:ring-2 focus-visible:ring-studio-accent"
+        className="group flex h-14 w-14 items-center justify-center rounded-full border border-studio-muted/30 bg-studio-black text-studio-light shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-studio-accent"
       >
-        <MessageCircle size={24} strokeWidth={1.5} className="transition-transform duration-300 group-hover:rotate-6" />
-        
-        <span className="absolute right-full mr-3 hidden lg:group-hover:inline-block px-3 py-1.5 bg-studio-black text-studio-light text-xs uppercase tracking-widest rounded shadow-md whitespace-nowrap pointer-events-none font-sans border border-studio-muted/20">
+        <MessageCircle
+          size={24}
+          strokeWidth={1.5}
+          className="transition-transform duration-300 group-hover:rotate-6"
+        />
+
+        <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded border border-studio-muted/20 bg-studio-black px-3 py-1.5 font-sans text-xs uppercase tracking-widest text-studio-light shadow-md lg:group-hover:inline-block">
           Fale Comigo
         </span>
       </a>

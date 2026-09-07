@@ -23,48 +23,31 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Larissa | Fotografia e Detalhes",
-
+  title: {
+    default: "Larissa | Fotografia e Detalhes",
+    template: "%s",
+  },
   description:
-    "Portfólio de fotografia focado em detalhes, luz e narrativas visuais.",
-
-  keywords: [
-    "fotógrafa",
-    "casamento",
-    "ensaios",
-    "fotografia minimalista",
-    "retratos corporativos",
-    "luz natural",
-  ],
-
-  authors: [
-    {
-      name: "Larissa Photographer",
-    },
-  ],
-
+    "Fotografia de casamentos, retratos e ensaios com atenção à luz, aos gestos e aos detalhes.",
+  authors: [{ name: "Larissa Photographer" }],
   creator: "Larissa Photographer",
-
   openGraph: {
     type: "website",
     locale: "pt_BR",
     title: "Larissa | Fotografia e Detalhes",
     description:
-      "Congelando frações de segundo onde a luz encontra a emoção. Explore o portfólio.",
+      "Fotografia de casamentos, retratos e ensaios com atenção à luz, aos gestos e aos detalhes.",
     siteName: "Larissa Photographer",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Larissa | Fotografia e Detalhes",
     description:
-      "Congelando frações de segundo onde a luz encontra a emoção.",
+      "Fotografia de casamentos, retratos e ensaios com atenção à luz, aos gestos e aos detalhes.",
   },
-
   robots: {
     index: true,
     follow: true,
-
     googleBot: {
       index: true,
       follow: true,
@@ -87,11 +70,9 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${inter.variable} ${cormorant.variable}`}
     >
-      <body className="relative bg-studio-bg font-sans text-studio-light antialiased selection:bg-studio-sand selection:text-studio-black">
+      <body className="relative bg-studio-bg font-sans text-studio-light antialiased">
         <Navbar />
-
         {children}
-
         <WhatsAppFloat />
       </body>
     </html>

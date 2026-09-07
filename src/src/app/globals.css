@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fontes */
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
 
-  /* Paleta do estúdio */
   --color-studio-sand: #d7c2a7;
   --color-studio-beige: #c9ab91;
   --color-studio-taupe: #b68f76;
@@ -14,7 +12,6 @@
   --color-studio-brown: #7a493b;
   --color-studio-black: #211a17;
 
-  /* Cores semânticas */
   --color-studio-bg: #211a17;
   --color-studio-card: #7a493b;
   --color-studio-light: #d7c2a7;
