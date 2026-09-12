@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-import { getWhatsAppUrl } from "@/lib/site";
+import { getWhatsAppUrl } from "../../lib/site";
 
 export default function WhatsAppFloat() {
   const whatsappUrl = getWhatsAppUrl();
