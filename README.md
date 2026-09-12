@@ -52,19 +52,3 @@ Entre elas podem estar:
 - Projetos autorais.
 
 As categorias e imagens podem ser atualizadas diretamente na estrutura de dados do projeto.
-
----
-
-## 🛠️ Tecnologias utilizadas
-
-Este projeto foi desenvolvido utilizando:
-
-- **Next.js**
-- **React**
-- **TypeScript**
-- **CSS**
-- **JavaScript**
-- **HTML**
-- **Git**
-- **GitHub**
-
