@@ -1,54 +1,36 @@
-# 📸 Portfólio Fotográfico — Larissa Andrade
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Site institucional e portfólio desenvolvido para apresentar o trabalho da fotógrafa **Larissa Andrade**, reunindo seus principais ensaios, identidade visual, informações profissionais e formas de contato em uma experiência moderna, elegante e responsiva.
+## Getting Started
 
-O projeto foi construído com foco na valorização das fotografias, utilizando uma interface minimalista onde as imagens são protagonistas da navegação.
+First, run the development server:
 
----
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## ✨ Sobre o projeto
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-A proposta do site é criar uma presença digital profissional para a fotógrafa, permitindo que clientes conheçam seu estilo de trabalho, naveguem pelos diferentes tipos de ensaio e entrem em contato de maneira simples.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-O design foi inspirado em portfólios fotográficos contemporâneos, buscando combinar:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Minimalismo;
-- Elegância;
-- Grande destaque para imagens;
-- Navegação intuitiva;
-- Experiência visual imersiva;
-- Responsividade para dispositivos móveis.
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## 📷 Principais funcionalidades
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- Hero com destaque para fotografias;
-- Carrossel automático de imagens;
-- Portfólio organizado por categorias;
-- Galerias fotográficas;
-- Seção de apresentação da fotógrafa;
-- Layout adaptado para desktop, tablet e celular;
-- Navegação fluida entre as seções;
-- Área de contato;
-- Tratamento responsivo das imagens para evitar cortes inadequados;
-- Estrutura preparada para expansão do portfólio.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 🗂️ Categorias do portfólio
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-O site apresenta diferentes áreas da fotografia, permitindo que cada ensaio seja exibido dentro de sua respectiva categoria.
-
-Entre elas podem estar:
-
-- Casamentos;
-- Ensaios de casal;
-- Gestantes;
-- Família;
-- Infantil;
-- Eventos;
-- Ensaios externos;
-- Projetos autorais.
-
-As categorias e imagens podem ser atualizadas diretamente na estrutura de dados do projeto.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

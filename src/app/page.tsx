@@ -1,23 +1,9 @@
-import About from "../components/sections/About";
-import Approach from "../components/sections/Approach";
-import Experience from "../components/sections/Experience";
-import Hero from "../components/sections/Hero";
-import Portfolio from "../components/sections/Portfolio";
+import Hero from "@/components/home/Hero";
 
-import Footer from "../components/layout/Footer";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <main className="min-h-screen w-full">
-        <Hero />
-        <Approach />
-        <Portfolio />
-        <About />
-        <Experience />
-      </main>
-
-      <Footer />
-    </>
+    <main>
+      <Hero />
+    </main>
   );
 }

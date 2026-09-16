@@ -1,98 +1,57 @@
 import type { Metadata } from "next";
 import {
+  Allura,
   Cormorant_Garamond,
   Inter,
 } from "next/font/google";
 
-import "./globals.css";
+import Header from "@/components/layout/Header";
 
-import Navbar from "@/components/layout/Navbar";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-editorial",
+  display: "swap",
+});
+
+const allura = Allura({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Larissa | Fotografia e Detalhes",
-
+  title: {
+    default: "Larissa Fotografia",
+    template: "%s | Larissa Fotografia",
+  },
   description:
-    "Portfólio de fotografia focado em detalhes, luz e narrativas visuais.",
-
-  keywords: [
-    "fotógrafa",
-    "casamento",
-    "ensaios",
-    "fotografia minimalista",
-    "retratos corporativos",
-    "luz natural",
-  ],
-
-  authors: [
-    {
-      name: "Larissa Photographer",
-    },
-  ],
-
-  creator: "Larissa Photographer",
-
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    title: "Larissa | Fotografia e Detalhes",
-    description:
-      "Congelando frações de segundo onde a luz encontra a emoção. Explore o portfólio.",
-    siteName: "Larissa Photographer",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Larissa | Fotografia e Detalhes",
-    description:
-      "Congelando frações de segundo onde a luz encontra a emoção.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+    "Fotografia sensível para guardar histórias, encontros e momentos que merecem permanecer.",
 };
-
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
 
 export default function RootLayout({
   children,
-}: Readonly<RootLayoutProps>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${inter.variable} ${cormorant.variable}`}
-    >
-      <body className="relative bg-studio-bg font-sans text-studio-light antialiased selection:bg-studio-sand selection:text-studio-black">
-        <Navbar />
+    <html lang="pt-BR">
+      <body
+        className={`${inter.variable} ${cormorant.variable} ${allura.variable}`}
+      >
+        <Header />
 
         {children}
-
-        <WhatsAppFloat />
       </body>
     </html>
   );

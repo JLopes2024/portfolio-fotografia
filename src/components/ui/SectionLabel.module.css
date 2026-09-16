@@ -1,0 +1,13 @@
+.label {
+  display: inline-block;
+
+  color: var(--color-primary);
+
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}

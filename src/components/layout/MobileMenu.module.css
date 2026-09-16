@@ -1,0 +1,152 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  min-height: 100dvh;
+
+  background:
+    linear-gradient(
+      rgba(32, 32, 31, 0.94),
+      rgba(32, 32, 31, 0.97)
+    );
+
+  color: #ffffff;
+
+  display: grid;
+  place-items: center;
+
+  overflow-y: auto;
+
+  animation: fadeIn 180ms ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 44px;
+  height: 44px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.closeButton span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+
+  width: 28px;
+  height: 1px;
+
+  background: #ffffff;
+}
+
+.closeButton span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.closeButton span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.content {
+  width: min(100% - 48px, 420px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-block: 80px 48px;
+
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.82);
+
+  font-family: var(--font-editorial, Georgia, serif);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.navLink:hover,
+.active {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.divider {
+  width: 72px;
+  height: 1px;
+
+  margin-block: 42px 30px;
+
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.social a {
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  transition: color 180ms ease;
+}
+
+.social a:hover {
+  color: var(--color-detail);
+}
+
+.quote {
+  margin-top: 50px;
+
+  color: rgba(255, 255, 255, 0.56);
+
+  font-family: var(--font-editorial, Georgia, serif);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 901px) {
+  .overlay {
+    display: none;
+  }
+}
